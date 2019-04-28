@@ -1,6 +1,6 @@
 {
-  "name": "eth-json-rpc-infura",
-  "version": "4.0.0",
+  "name": "@callistonetwork/eth-json-rpc-0xinfra",
+  "version": "1.0.0",
   "main": "src/index.js",
   "directories": {
     "test": "test"
@@ -19,14 +19,14 @@
     "test": "node test/index.js"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kumavis/eth-json-rpc-infura.git"
+    "url": "git+https://github.com/CallistoNetwork/eth-json-rpc-0xinfra.git"
   },
   "bugs": {
-    "url": "https://github.com/kumavis/eth-json-rpc-infura/issues"
+    "url": "https://github.com/CallistoNetwork/eth-json-rpc-0xinfra/issues"
   },
-  "homepage": "https://github.com/kumavis/eth-json-rpc-infura#readme",
+  "homepage": "https://github.com/CallistoNetwork/eth-json-rpc-0xinfra#readme",
   "description": ""
 }

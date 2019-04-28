@@ -13,10 +13,10 @@ const RETRIABLE_ERRORS = [
   'SyntaxError',
 ]
 
-module.exports = createInfuraMiddleware
+module.exports = create0xinfraMiddleware
 module.exports.fetchConfigFromReq = fetchConfigFromReq
 
-function createInfuraMiddleware(opts = {}) {
+function create0xinfraMiddleware(opts = {}) {
   const network = opts.network || 'mainnet'
   const maxAttempts = opts.maxAttempts || 5
   const source = opts.source
@@ -42,7 +42,7 @@ function createInfuraMiddleware(opts = {}) {
         // if no more attempts remaining, throw an error
         const remainingAttempts = maxAttempts - attempt
         if (!remainingAttempts) {
-          const errMsg = `InfuraProvider - cannot complete request. All retries exhausted.\nOriginal Error:\n${err.toString()}\n\n`
+          const errMsg = `0xInfra - cannot complete request. All retries exhausted.\nOriginal Error:\n${err.toString()}\n\n`
           const retriesExhaustedErr = new Error(errMsg)
           throw retriesExhaustedErr
         }
@@ -107,23 +107,17 @@ function fetchConfigFromReq({ network, req, source }) {
   const { method, params } = cleanReq
 
   const fetchParams = {}
-  let fetchUrl = `https://api.infura.io/v1/jsonrpc/${network}`
+  let fetchUrl = `https://clo-geth.0xinfra.com/`
   const isPostMethod = POST_METHODS.includes(method)
   if (isPostMethod) {
     fetchParams.method = 'POST'
     fetchParams.headers = {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      ...(source ? {'Infura-Source': `${source}/${requestOrigin}`} : {}),
     },
     fetchParams.body = JSON.stringify(cleanReq)
   } else {
     fetchParams.method = 'GET'
-    if (source) {
-      fetchParams.headers = {
-        'Infura-Source': `${source}/${requestOrigin}`
-      }
-    }
     const paramsString = encodeURIComponent(JSON.stringify(params))
     fetchUrl += `/${method}?params=${paramsString}`
   }
