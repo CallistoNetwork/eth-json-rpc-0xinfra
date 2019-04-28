@@ -1,6 +1,6 @@
-# eth-json-rpc-infura
+# eth-json-rpc-0xinfra
 
-`json-rpc-engine` middleware for infura's REST endpoints.
+`json-rpc-engine` middleware for 0xinfra's REST endpoints.
 
 ### usage as provider
 
