@@ -108,19 +108,12 @@ function fetchConfigFromReq({ network, req, source }) {
 
   const fetchParams = {}
   let fetchUrl = `https://clo-geth.0xinfra.com/`
-  const isPostMethod = POST_METHODS.includes(method)
-  if (isPostMethod) {
-    fetchParams.method = 'POST'
-    fetchParams.headers = {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-    },
-    fetchParams.body = JSON.stringify(cleanReq)
-  } else {
-    fetchParams.method = 'GET'
-    const paramsString = encodeURIComponent(JSON.stringify(params))
-    fetchUrl += `/${method}?params=${paramsString}`
+  fetchParams.method = 'POST'
+  fetchParams.headers = {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
   }
+  fetchParams.body = JSON.stringify(cleanReq)
 
   return { fetchUrl, fetchParams }
 }
